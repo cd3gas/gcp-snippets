@@ -7,6 +7,12 @@
 
 # GCP Snippets / Data Engineer / Dataflow / WordCountToFile
 
+1) Para ejecutar el proceso en local:
+
+mvn compile exec:java -Dexec.mainClass=snippets.wordcount.file.WordCountToFilePipeline
+
+2) Explicación del proceso:
+
 Inicializar Pipeline.
 
 ```
