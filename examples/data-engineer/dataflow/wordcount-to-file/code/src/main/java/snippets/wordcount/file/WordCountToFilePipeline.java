@@ -22,7 +22,6 @@ public class WordCountToFilePipeline {
         final String OUTPUT_FILE_NAME = "output";
 
         PipelineOptions options = PipelineOptionsFactory.create();
-
         Pipeline pipeline = Pipeline.create(options);
 
         PCollection<String> lines = pipeline.apply("Read from file", TextIO.read().from(INPUT_FILE_PATH));
