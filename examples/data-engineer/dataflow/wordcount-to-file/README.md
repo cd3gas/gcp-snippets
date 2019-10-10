@@ -7,16 +7,22 @@
 
 # GCP Snippets / Data Engineer / Dataflow / WordCountToFile
 
+Inicializar Pipeline.
+
 ```
         PipelineOptions options = PipelineOptionsFactory.create();
         Pipeline pipeline = Pipeline.create(options);
 
 ```
 
+Leer archivo de entrada y obtener una lista PCollection de líneas del archivo.
+
 ```
 		PCollection<String> lines = pipeline.apply("Read from file", TextIO.read().from(INPUT_FILE_PATH));
         
 ```
+
+Transformar una lista PCollection de líneas del archivo a una lista PCollection de listas de las palabras que existen en cada línea.
 
 ```
         PCollection<List<String>> wordsPerLine = lines.apply(MapElements.via(new SimpleFunction<String, List<String>>() {
@@ -30,16 +36,23 @@
 
 ```
 
+Transformar una lista PCollection de listas de las palabras que existen en cada línea a una sola lista PCollection con todas las palabras que existen en el archivo de entrada.
+
+
 ```
         PCollection<String> words =  wordsPerLine.apply(Flatten.<String>iterables());
 
 ```
+
+Transformar una lista PCollection con todas las palabras que existen en el archivo de entrada a una lista PCollection "llave,valor" donde la llave es la palabra  y el valor es la cantidad de veces que aparece en el archivo.
 
 ```
 
         PCollection<KV<String,Long>> wordCount =  words.apply(Count.<String>perElement());
 
 ```
+
+Transformar una lista PCollection "llave,valor" a una lista PCollection con un String formateado que indica cuantas veces aparece una palabra en el archivo.
 
 ```
 
@@ -56,11 +69,15 @@
 
 ```
 
+Escribir x cantidad de archivos con una línea por cada conteo de palabras en el archivo.
+
 ```
 
         formatWordCount.apply(TextIO.write().to(OUTPUT_FILE_NAME));
 
 ```
+
+Ejecutar Pipeline.
 
 ```
 
