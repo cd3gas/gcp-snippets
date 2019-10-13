@@ -5,11 +5,11 @@
 [slack_badge]: https://img.shields.io/badge/slack-gcp-E01563.svg?style=flat
 [slack_link]: https://join.slack.com/t/gdgcloudscl/shared_invite/enQtNDg4NjQ2NTE3NDkwLThhMTI0NmQ5NDhjMGRhMzJhNmQwZDEzNWRlNzIzMTA3YWNjMWUyY2Q2OTg1ZTk4OTZiYmNiMDU1MWNjMWZjOTM
 
-# GCP Snippets / Data Engineer / Dataflow / WordCountToFile
+# GCP Snippets / Data Engineer / Dataflow / Text To File WordCount Pipeline
 
 1) Para ejecutar el proceso en local:
 
-mvn compile exec:java -Dexec.mainClass=snippets.wordcount.file.WordCountToFilePipeline
+mvn compile exec:java -Dexec.mainClass=snippets.dataengineer.dataflow.TextToFileWordCountPipeline
 
 2) Explicación del proceso:
 
@@ -24,7 +24,7 @@ Inicializar Pipeline.
 Leer archivo de entrada y obtener una lista PCollection de líneas del archivo.
 
 ```
-		PCollection<String> lines = pipeline.apply("Read from file", TextIO.read().from(INPUT_FILE_PATH));
+		PCollection<String> lines = pipeline.apply("Read from file:", TextIO.read().from(INPUT_FILE_PATH));
         
 ```
 
@@ -79,7 +79,7 @@ Escribir x cantidad de archivos con una línea por cada conteo de palabras en el
 
 ```
 
-        formatWordCount.apply(TextIO.write().to(OUTPUT_FILE_NAME));
+        formatWordCount.apply("Write to file:", TextIO.write().to(OUTPUT_FILE_NAME));
 
 ```
 

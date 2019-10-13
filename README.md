@@ -9,4 +9,16 @@
 
 ## Data Engineer
 
-* [WordCountToFilePipeline](examples/data-engineer/dataflow/wordcount-to-file) - Template de ejemplo el Dataflow para entender el funcionamiento del conteo de palabras en un archivo. (Por: Sebastián Moreno E)
+### Dataflow
+
+* [Text To File Pipeline](examples/data-engineer/dataflow/text-to-file) - Lectura de archivo de texto y escritura de archivo de texto. (Por: [Sebastián Moreno E](https://github.com/sebastianmorenoe))
+
+* [Text To BigQuery Pipeline](examples/data-engineer/dataflow/text-to-bigquery) - Lectura de archivo de texto y escritura en BigQuery. (Por: [Sebastián Moreno E](https://github.com/sebastianmorenoe))
+
+* [Text To File With Transform Pipeline](examples/data-engineer/dataflow/text-to-file-transform) - Lectura de archivo de texto y escritura de archivo de texto con transformación simple de datos. (Por: [Sebastián Moreno E](https://github.com/sebastianmorenoe))
+
+* [Text To BigQuery With Transform Pipeline](examples/data-engineer/dataflow/text-to-bigquery-transform) - Lectura de archivo de texto y escritura en BigQuery con transformación simple de datos. (Por: [Sebastián Moreno E](https://github.com/sebastianmorenoe))
+
+* [Text To File WordCount Pipeline](examples/data-engineer/dataflow/text-to-file-wordcount) - Lectura de archivo de texto y escritura de archivo de texto con la cantidad de repetición de palabras. (Por: [Sebastián Moreno E](https://github.com/sebastianmorenoe))
+
+* [Text To BigQuery WordCount Pipeline](examples/data-engineer/dataflow/text-to-bigquery-wordcount) - Lectura de archivo de texto y escritura en BigQuery con la cantidad de repetición de palabras. (Por: [Sebastián Moreno E](https://github.com/sebastianmorenoe))
