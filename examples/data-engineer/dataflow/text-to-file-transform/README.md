@@ -9,7 +9,7 @@
 
 1) Para ejecutar el proceso en local:
 
-mvn compile exec:java -Dexec.mainClass=snippets.
+mvn compile exec:java -Dexec.mainClass=snippets.dataengineer.dataflow.TextToFileTransformPipeline
 
 2) Explicación del proceso:
 
@@ -18,5 +18,41 @@ Inicializar Pipeline.
 ```
         PipelineOptions options = PipelineOptionsFactory.create();
         Pipeline pipeline = Pipeline.create(options);
+
+```
+Leer archivo de entrada y obtener una lista PCollection de líneas del archivo.
+
+```
+
+		PCollection<String> lines = pipeline.apply("Read from file:", TextIO.read().from(INPUT_FILE_PATH));
+
+```
+Transformar una lista PCollection de líneas del archivo a una lista PCollection de líneas formateadas.
+
+```
+        PCollection<String> formattedLines = lines.apply(MapElements.via(new SimpleFunction<String,String>() {
+
+            @Override
+            public String apply(String input){
+
+                return String.format("Number: %s",input);
+
+            }
+
+        }));
+
+```
+
+Escribir x cantidad de archivos con una línea formateada por cada línea existente en el archivo de entrada.
+
+```
+
+		formattedLines.apply("Write to file:", TextIO.write().to(OUTPUT_FILE_NAME));
+
+```
+Ejecutar Pipeline.
+
+```
+		pipeline.run().waitUntilFinish();
 
 ```
