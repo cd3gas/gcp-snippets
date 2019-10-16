@@ -80,6 +80,16 @@ Escribir x cantidad de archivos con una línea por cada conteo de palabras en el
 ```
 
         formatWordCount.apply("Write to file:", TextIO.write().to(OUTPUT_FILE_NAME));
+	
+
+```
+o especificar cuantos archivos generar
+XX  indica numero de archivos
+
+```
+
+        formatWordCount.apply(TextIO.write().to(OUTPUT_FILE_NAME).withNumShards(XX));
+	
 
 ```
 
